@@ -26,9 +26,12 @@ class Play extends Phaser.State {
 
         pawns.forEach((item) => {
             item.inputEnabled = true;
-            item.input.enableDrag(true, true);
+            item.input.enableDrag();
             item.events.onDragStop.add(() => {
                 console.log('stops');
+            });
+            item.events.onDragUpdate.add((sprite, pointer, dragX, dragY, snapPoint) => {
+                console.log(dragX, dragY);
             });
         });
     }
