@@ -1,4 +1,5 @@
 import Board from '../objects/board.es6.js';
+import Pawn from '../objects/pawn.es6.js';
 
 class Play extends Phaser.State {
     init() {
@@ -6,23 +7,22 @@ class Play extends Phaser.State {
     }
 
     preload() {
-        this.board.preload();
-
-        this.load.image('pawn', './app/media/images/pawn.png');
+        Board.preload(this);
+        Pawn.preload(this);
     }
 
     create() {
         this.board.create();
 
         let pawns = this.game.add.group();
-        pawns.add(this.game.add.sprite(0, 787, 'pawn'));
-        pawns.add(this.game.add.sprite(120, 787, 'pawn'));
-        pawns.add(this.game.add.sprite(250, 787, 'pawn'));
-        pawns.add(this.game.add.sprite(380, 787, 'pawn'));
-        pawns.add(this.game.add.sprite(520, 787, 'pawn'));
-        pawns.add(this.game.add.sprite(640, 787, 'pawn'));
-        pawns.add(this.game.add.sprite(780, 787, 'pawn'));
-        pawns.add(this.game.add.sprite(900, 787, 'pawn'));
+        pawns.add((new Pawn(this.game, this)).create(0, 787));
+        pawns.add((new Pawn(this.game, this)).create(120, 787));
+        pawns.add((new Pawn(this.game, this)).create(250, 787));
+        pawns.add((new Pawn(this.game, this)).create(380, 787));
+        pawns.add((new Pawn(this.game, this)).create(520, 787));
+        pawns.add((new Pawn(this.game, this)).create(640, 787));
+        pawns.add((new Pawn(this.game, this)).create(780, 787));
+        pawns.add((new Pawn(this.game, this)).create(900, 787));
 
         pawns.forEach((item) => {
             item.inputEnabled = true;

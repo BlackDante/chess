@@ -4,12 +4,12 @@ class Pawn {
         this.state = state;
     }
 
-    static preload() {
-        this.state.load.image('pawn', './app/media/images/pawn.png');
+    static preload(state) {
+        state.load.image('pawn', './app/media/images/pawn.png');
     }
 
-    create() {
-
+    create(x, y) {
+        return this.game.add.sprite(x, y, 'pawn');
     }
 }
 

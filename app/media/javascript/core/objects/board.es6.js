@@ -4,8 +4,8 @@ class Board {
         this.state = state;
     }
 
-    preload() {
-        this.state.load.image('board', './app/media/images/board.png');
+    static preload(state) {
+        state.load.image('board', './app/media/images/board.png');
     }
 
     create() {
